@@ -24,10 +24,12 @@
  */
 package org.spongepowered.api.event.data;
 
+import org.spongepowered.api.block.tileentity.TileEntity;
 import org.spongepowered.api.data.DataHolder;
 import org.spongepowered.api.data.manipulator.DataManipulator;
 import org.spongepowered.api.data.manipulator.ImmutableDataManipulator;
 import org.spongepowered.api.data.value.BaseValue;
+import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.event.Cancellable;
 import org.spongepowered.api.event.Event;
 
@@ -36,9 +38,15 @@ import java.util.Optional;
 
 /**
  * An event that is associated with a {@link DataHolder} that may have some
- * {@link BaseValue}s changed, offered, or removed. Note that calling any
- * methods relating to modifying a {@link DataHolder} while this event
- * is being processed may produce awkward results.
+ * {@link BaseValue}s changed, offered, or removed.
+ *
+ * This event is only fired for "active" {@link DataHolder}s, such as spawned
+ * {@link Entity}s or {@link TileEntity}s. Their relevent events will be fired
+ * when they become active or inactive.
+ *
+ * Note that calling any methods relating to modifying the relevant data on the
+ * relevant {@link DataHolder} while this event is being processed is undefined
+ * behavior.
  */
 public interface ChangeDataHolderEvent<M extends DataManipulator<M, I>, I extends ImmutableDataManipulator<I, M>>
         extends Event, Cancellable {
