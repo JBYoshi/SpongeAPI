@@ -24,6 +24,7 @@
  */
 package org.spongepowered.api.data;
 
+import org.spongepowered.api.data.key.Key;
 import org.spongepowered.api.data.manipulator.DataManipulator;
 import org.spongepowered.api.data.manipulator.DataManipulatorBuilder;
 import org.spongepowered.api.data.manipulator.ImmutableDataManipulator;
@@ -204,5 +205,16 @@ public interface DataManager {
      * @return The data translator, if available
      */
     <T> Optional<DataTranslator<T>> getTranslator(Class<T> objectclass);
+
+    /**
+     * Gets the registered {@link DataManipulator} class containing the
+     * provided {@link Key}.
+     *
+     * @param key The {@link Key}
+     * @param <M> The type of {@link DataManipulator}
+     * @param <I> The type of {@link ImmutableDataManipulator}
+     * @return The class of {@code M}
+     */
+    <M extends DataManipulator<M, I>, I extends ImmutableDataManipulator<I, M>> Optional<Class<M>> getManipulatorClass(Key<?> key);
 
 }

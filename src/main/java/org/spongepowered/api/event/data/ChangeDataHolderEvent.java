@@ -25,14 +25,14 @@
 package org.spongepowered.api.event.data;
 
 import org.spongepowered.api.data.DataHolder;
-import org.spongepowered.api.data.DataTransactionResult;
+import org.spongepowered.api.data.manipulator.DataManipulator;
+import org.spongepowered.api.data.manipulator.ImmutableDataManipulator;
 import org.spongepowered.api.data.value.BaseValue;
-import org.spongepowered.api.data.value.mutable.Value;
 import org.spongepowered.api.event.Cancellable;
 import org.spongepowered.api.event.Event;
-import org.spongepowered.api.event.impl.AbstractValueChangeEvent;
-import org.spongepowered.api.eventgencore.annotation.ImplementedBy;
-import org.spongepowered.api.eventgencore.annotation.PropertySettings;
+
+import javax.annotation.Nullable;
+import java.util.Optional;
 
 /**
  * An event that is associated with a {@link DataHolder} that may have some
@@ -40,7 +40,8 @@ import org.spongepowered.api.eventgencore.annotation.PropertySettings;
  * methods relating to modifying a {@link DataHolder} while this event
  * is being processed may produce awkward results.
  */
-public interface ChangeDataHolderEvent extends Event, Cancellable {
+public interface ChangeDataHolderEvent<M extends DataManipulator<M, I>, I extends ImmutableDataManipulator<I, M>>
+        extends Event, Cancellable {
 
     /**
      * Gets the {@link DataHolder} targeted in this event.
@@ -49,39 +50,29 @@ public interface ChangeDataHolderEvent extends Event, Cancellable {
      */
     DataHolder getTargetHolder();
 
-    @ImplementedBy(AbstractValueChangeEvent.class)
-    interface ValueChange extends ChangeDataHolderEvent {
+    /**
+     * Gets the data present in the {@link DataHolder} prior to this event, as
+     * an {@link ImmutableDataManipulator}. May be {@link Optional#empty()} if
+     * the data is being added.
+     *
+     * @return The data before being changed
+     */
+    Optional<I> getOriginalData();
 
-        /**
-         * Gets the original {@link DataTransactionResult} of the {@link Value}s
-         * that have changed in this event.
-         *
-         * @return The original changes of values
-         */
-        DataTransactionResult getOriginalChanges();
+    /**
+     * Gets the data which will be present in the {@link DataHolder} after
+     * this event, as an {@link ImmutableDataManipulator}. If the data is being
+     * removed, this will be {@link Optional#empty()}.
+     *
+     * @return The data after being changed
+     */
+    Optional<I> getModifiedData();
 
-        /**
-         * Submits a new {@link DataTransactionResult} as a proposal of various
-         * {@link Value}s to be successfully offered/changed on the original
-         * {@link DataHolder}.
-         *
-         * <p>If the proposed {@link DataTransactionResult} provides additional
-         * values that were not changed in the {@link #getOriginalChanges()},
-         * the provided changes suggested to be successfully offered will be
-         * re-offered </p>
-         *
-         * @param result The resulting offer
-         * @return This event, for chaining
-         */
-        ValueChange proposeChanges(DataTransactionResult result);
-
-        /**
-         * Gets the ending resulting {@link DataTransactionResult} that will be
-         * offered to the {@link DataHolder}.
-         *
-         * @return The final transaction details to be submitted
-         */
-        @PropertySettings(requiredParameter = false)
-        DataTransactionResult getEndResult();
-    }
+    /**
+     * Modifies the data which will be present in the {@link DataHolder} after
+     * this event.
+     *
+     * @param dataManipulator The data after being changed
+     */
+    void setModifiedData(@Nullable I dataManipulator);
 }

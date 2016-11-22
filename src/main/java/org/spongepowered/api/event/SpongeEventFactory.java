@@ -45,7 +45,6 @@ import org.spongepowered.api.block.tileentity.carrier.Furnace;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.source.RconSource;
 import org.spongepowered.api.data.DataHolder;
-import org.spongepowered.api.data.DataTransactionResult;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableSignData;
 import org.spongepowered.api.data.manipulator.mutable.tileentity.SignData;
@@ -1098,19 +1097,21 @@ public class SpongeEventFactory {
     /**
      * AUTOMATICALLY GENERATED, DO NOT EDIT.
      * Creates a new instance of
-     * {@link org.spongepowered.api.event.data.ChangeDataHolderEvent.ValueChange}.
+     * {@link org.spongepowered.api.event.data.ChangeDataHolderEvent}.
      * 
      * @param cause The cause
-     * @param originalChanges The original changes
+     * @param modifiedData The modified data
+     * @param originalData The original data
      * @param targetHolder The target holder
-     * @return A new value change change data holder event
+     * @return A new change data holder event
      */
-    public static ChangeDataHolderEvent.ValueChange createChangeDataHolderEventValueChange(Cause cause, DataTransactionResult originalChanges, DataHolder targetHolder) {
+    public static ChangeDataHolderEvent createChangeDataHolderEvent(Cause cause, Optional<I> modifiedData, Optional<I> originalData, DataHolder targetHolder) {
         HashMap<String, Object> values = new HashMap<>();
         values.put("cause", cause);
-        values.put("originalChanges", originalChanges);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
         values.put("targetHolder", targetHolder);
-        return SpongeEventFactoryUtils.createEventImpl(ChangeDataHolderEvent.ValueChange.class, values);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDataHolderEvent.class, values);
     }
 
     /**

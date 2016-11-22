@@ -24,13 +24,16 @@
  */
 package org.spongepowered.api.data.manipulator;
 
+import org.spongepowered.api.data.DataHolder;
 import org.spongepowered.api.data.DataSerializable;
 import org.spongepowered.api.data.key.Key;
 import org.spongepowered.api.data.value.BaseValue;
 import org.spongepowered.api.data.value.ValueContainer;
 import org.spongepowered.api.data.value.immutable.ImmutableValue;
 import org.spongepowered.api.data.value.mutable.Value;
+import org.spongepowered.api.event.data.ChangeDataHolderEvent;
 
+import javax.annotation.Nullable;
 import java.util.Optional;
 
 /**
@@ -96,5 +99,17 @@ public interface ImmutableDataManipulator<I extends ImmutableDataManipulator<I, 
      *     {@link DataManipulator}
      */
     M asMutable();
+
+    /**
+     * Creates a {@link ChangeDataHolderEvent} relevant to this
+     * {@link DataManipulator}.
+     *
+     * @param dataHolder The {@link DataHolder} related to the event.
+     * @param original The original data, as an {@link ImmutableDataManipulator}.
+     * @param replaced The new data, as an {@link ImmutableDataManipulator}.
+     * @return A new {@link ChangeDataHolderEvent}.
+     */
+    ChangeDataHolderEvent<M, I> createChangeDataHolderEvent(DataHolder dataHolder, @Nullable I original,
+                                                            @Nullable I replaced);
 
 }
