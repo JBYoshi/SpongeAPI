@@ -32,6 +32,7 @@ import org.spongepowered.api.data.value.BaseValue;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.event.Cancellable;
 import org.spongepowered.api.event.Event;
+import org.spongepowered.api.eventgencore.annotation.GenerateFactoryMethod;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -48,6 +49,7 @@ import java.util.Optional;
  * relevant {@link DataHolder} while this event is being processed is undefined
  * behavior.
  */
+@GenerateFactoryMethod
 public interface ChangeDataHolderEvent<M extends DataManipulator<M, I>, I extends ImmutableDataManipulator<I, M>>
         extends Event, Cancellable {
 

@@ -46,6 +46,164 @@ import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.source.RconSource;
 import org.spongepowered.api.data.DataHolder;
 import org.spongepowered.api.data.Transaction;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableColoredData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableCommandData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableDisplayNameData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableDyeableData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableFireworkEffectData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableFireworkRocketData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableMobSpawnerData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutablePotionEffectData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableRepresentedItemData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableRepresentedPlayerData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableRotationalData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableSkullData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableTargetedLocationData;
+import org.spongepowered.api.data.manipulator.immutable.ImmutableWetData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableAttachedData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableAxisData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableBigMushroomData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableBrickData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableComparatorData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableConnectedDirectionData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDecayableData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDelayableData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDirectionalData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDirtData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDisarmedData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDisguisedBlockData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDoublePlantData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDropData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableExtendedData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableFilledData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableFluidLevelData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableGrowthData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableHingeData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableInWallData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableLayeredData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableLogAxisData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableMoistureData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableOccupiedData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableOpenData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutablePistonData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutablePlantData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutablePortionData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutablePoweredData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutablePrismarineData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableQuartzData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableRailDirectionData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableRedstonePoweredData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableSandData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableSandstoneData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableSeamlessData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableShrubData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableSlabData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableSnowedData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableStairShapeData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableStoneData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableTreeData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableWallData;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableWireAttachmentData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAchievementData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAffectsSpawningData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAgeableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAgentData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAggressiveData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableAngerableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableArmorStandData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableArtData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableBodyPartRotationalData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableBreathingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableBreedableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableCareerData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableChargedData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableCriticalHitData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableCustomNameVisibleData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableDamageableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableDamagingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableDespawnDelayData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableDominantHandData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableElderData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableExpOrbData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableExperienceHolderData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableExpirableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableExplosionRadiusData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFallDistanceData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFallingBlockData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFlammableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFlyingAbilityData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFlyingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFoodData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableFuseData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableGameModeData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableGlowingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableGravityData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableGriefingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableHealthData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableHealthScalingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableHorseData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableIgniteableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableInvisibilityData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableInvulnerabilityData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableJoinData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableKnockbackData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableLeashData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableMinecartBlockData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableMovementSpeedData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableOcelotData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePassengerData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePersistingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePickupDelayData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePickupRuleData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePigSaddleData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePlayerCreatedData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutablePlayingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableRabbitData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableRespawnLocation;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableScreamingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableShatteringData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableShearedData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSilentData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSittingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSizeData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSkeletonData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSkinData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSleepingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSlimeData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSneakingData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableSprintData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableStatisticData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableStuckArrowsData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableTameableData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableTradeOfferData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableVehicleData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableVelocityData;
+import org.spongepowered.api.data.manipulator.immutable.entity.ImmutableZombieData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableAuthorData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableBlockItemData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableBreakableData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableCoalData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableCookedFishData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableDurabilityData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableEnchantmentData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableFishData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableGenerationData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableGoldenAppleData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableHideData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableInventoryItemData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableLoreData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableMapItemData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutablePagedData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutablePlaceableData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableSpawnableData;
+import org.spongepowered.api.data.manipulator.immutable.item.ImmutableStoredEnchantmentData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableBannerData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableBeaconData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableBrewingStandData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableCooldownData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableFurnaceData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableLockableData;
+import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableNoteData;
 import org.spongepowered.api.data.manipulator.immutable.tileentity.ImmutableSignData;
 import org.spongepowered.api.data.manipulator.mutable.tileentity.SignData;
 import org.spongepowered.api.data.type.HandType;
@@ -90,7 +248,165 @@ import org.spongepowered.api.event.cause.entity.damage.DamageModifier;
 import org.spongepowered.api.event.cause.entity.health.HealthModifier;
 import org.spongepowered.api.event.command.SendCommandEvent;
 import org.spongepowered.api.event.command.TabCompleteEvent;
-import org.spongepowered.api.event.data.ChangeDataHolderEvent;
+import org.spongepowered.api.event.data.ChangeColoredData;
+import org.spongepowered.api.event.data.ChangeCommandData;
+import org.spongepowered.api.event.data.ChangeDisplayNameData;
+import org.spongepowered.api.event.data.ChangeDyeableData;
+import org.spongepowered.api.event.data.ChangeFireworkEffectData;
+import org.spongepowered.api.event.data.ChangeFireworkRocketData;
+import org.spongepowered.api.event.data.ChangeMobSpawnerData;
+import org.spongepowered.api.event.data.ChangePotionEffectData;
+import org.spongepowered.api.event.data.ChangeRepresentedItemData;
+import org.spongepowered.api.event.data.ChangeRepresentedPlayerData;
+import org.spongepowered.api.event.data.ChangeRotationalData;
+import org.spongepowered.api.event.data.ChangeSkullData;
+import org.spongepowered.api.event.data.ChangeTargetedLocationData;
+import org.spongepowered.api.event.data.ChangeWetData;
+import org.spongepowered.api.event.data.block.ChangeAttachedData;
+import org.spongepowered.api.event.data.block.ChangeAxisData;
+import org.spongepowered.api.event.data.block.ChangeBigMushroomData;
+import org.spongepowered.api.event.data.block.ChangeBrickData;
+import org.spongepowered.api.event.data.block.ChangeComparatorData;
+import org.spongepowered.api.event.data.block.ChangeConnectedDirectionData;
+import org.spongepowered.api.event.data.block.ChangeDecayableData;
+import org.spongepowered.api.event.data.block.ChangeDelayableData;
+import org.spongepowered.api.event.data.block.ChangeDirectionalData;
+import org.spongepowered.api.event.data.block.ChangeDirtData;
+import org.spongepowered.api.event.data.block.ChangeDisarmedData;
+import org.spongepowered.api.event.data.block.ChangeDisguisedBlockData;
+import org.spongepowered.api.event.data.block.ChangeDoublePlantData;
+import org.spongepowered.api.event.data.block.ChangeDropData;
+import org.spongepowered.api.event.data.block.ChangeExtendedData;
+import org.spongepowered.api.event.data.block.ChangeFilledData;
+import org.spongepowered.api.event.data.block.ChangeFluidLevelData;
+import org.spongepowered.api.event.data.block.ChangeGrowthData;
+import org.spongepowered.api.event.data.block.ChangeHingeData;
+import org.spongepowered.api.event.data.block.ChangeInWallData;
+import org.spongepowered.api.event.data.block.ChangeLayeredData;
+import org.spongepowered.api.event.data.block.ChangeLogAxisData;
+import org.spongepowered.api.event.data.block.ChangeMoistureData;
+import org.spongepowered.api.event.data.block.ChangeOccupiedData;
+import org.spongepowered.api.event.data.block.ChangeOpenData;
+import org.spongepowered.api.event.data.block.ChangePistonData;
+import org.spongepowered.api.event.data.block.ChangePlantData;
+import org.spongepowered.api.event.data.block.ChangePortionData;
+import org.spongepowered.api.event.data.block.ChangePoweredData;
+import org.spongepowered.api.event.data.block.ChangePrismarineData;
+import org.spongepowered.api.event.data.block.ChangeQuartzData;
+import org.spongepowered.api.event.data.block.ChangeRailDirectionData;
+import org.spongepowered.api.event.data.block.ChangeRedstonePoweredData;
+import org.spongepowered.api.event.data.block.ChangeSandData;
+import org.spongepowered.api.event.data.block.ChangeSandstoneData;
+import org.spongepowered.api.event.data.block.ChangeSeamlessData;
+import org.spongepowered.api.event.data.block.ChangeShrubData;
+import org.spongepowered.api.event.data.block.ChangeSlabData;
+import org.spongepowered.api.event.data.block.ChangeSnowedData;
+import org.spongepowered.api.event.data.block.ChangeStairShapeData;
+import org.spongepowered.api.event.data.block.ChangeStoneData;
+import org.spongepowered.api.event.data.block.ChangeTreeData;
+import org.spongepowered.api.event.data.block.ChangeWallData;
+import org.spongepowered.api.event.data.block.ChangeWireAttachmentData;
+import org.spongepowered.api.event.data.entity.ChangeAchievementData;
+import org.spongepowered.api.event.data.entity.ChangeAffectsSpawningData;
+import org.spongepowered.api.event.data.entity.ChangeAgeableData;
+import org.spongepowered.api.event.data.entity.ChangeAgentData;
+import org.spongepowered.api.event.data.entity.ChangeAggressiveData;
+import org.spongepowered.api.event.data.entity.ChangeAngerableData;
+import org.spongepowered.api.event.data.entity.ChangeArmorStandData;
+import org.spongepowered.api.event.data.entity.ChangeArtData;
+import org.spongepowered.api.event.data.entity.ChangeBodyPartRotationalData;
+import org.spongepowered.api.event.data.entity.ChangeBreathingData;
+import org.spongepowered.api.event.data.entity.ChangeBreedableData;
+import org.spongepowered.api.event.data.entity.ChangeCareerData;
+import org.spongepowered.api.event.data.entity.ChangeChargedData;
+import org.spongepowered.api.event.data.entity.ChangeCriticalHitData;
+import org.spongepowered.api.event.data.entity.ChangeCustomNameVisibleData;
+import org.spongepowered.api.event.data.entity.ChangeDamageableData;
+import org.spongepowered.api.event.data.entity.ChangeDamagingData;
+import org.spongepowered.api.event.data.entity.ChangeDespawnDelayData;
+import org.spongepowered.api.event.data.entity.ChangeDominantHandData;
+import org.spongepowered.api.event.data.entity.ChangeElderData;
+import org.spongepowered.api.event.data.entity.ChangeExpOrbData;
+import org.spongepowered.api.event.data.entity.ChangeExperienceHolderData;
+import org.spongepowered.api.event.data.entity.ChangeExpirableData;
+import org.spongepowered.api.event.data.entity.ChangeExplosionRadiusData;
+import org.spongepowered.api.event.data.entity.ChangeFallDistanceData;
+import org.spongepowered.api.event.data.entity.ChangeFallingBlockData;
+import org.spongepowered.api.event.data.entity.ChangeFlammableData;
+import org.spongepowered.api.event.data.entity.ChangeFlyingAbilityData;
+import org.spongepowered.api.event.data.entity.ChangeFlyingData;
+import org.spongepowered.api.event.data.entity.ChangeFoodData;
+import org.spongepowered.api.event.data.entity.ChangeFuseData;
+import org.spongepowered.api.event.data.entity.ChangeGameModeData;
+import org.spongepowered.api.event.data.entity.ChangeGlowingData;
+import org.spongepowered.api.event.data.entity.ChangeGravityData;
+import org.spongepowered.api.event.data.entity.ChangeGriefingData;
+import org.spongepowered.api.event.data.entity.ChangeHealthData;
+import org.spongepowered.api.event.data.entity.ChangeHealthScalingData;
+import org.spongepowered.api.event.data.entity.ChangeHorseData;
+import org.spongepowered.api.event.data.entity.ChangeIgniteableData;
+import org.spongepowered.api.event.data.entity.ChangeInvisibilityData;
+import org.spongepowered.api.event.data.entity.ChangeInvulnerabilityData;
+import org.spongepowered.api.event.data.entity.ChangeJoinData;
+import org.spongepowered.api.event.data.entity.ChangeKnockbackData;
+import org.spongepowered.api.event.data.entity.ChangeLeashData;
+import org.spongepowered.api.event.data.entity.ChangeMinecartBlockData;
+import org.spongepowered.api.event.data.entity.ChangeMovementSpeedData;
+import org.spongepowered.api.event.data.entity.ChangeOcelotData;
+import org.spongepowered.api.event.data.entity.ChangePassengerData;
+import org.spongepowered.api.event.data.entity.ChangePersistingData;
+import org.spongepowered.api.event.data.entity.ChangePickupDelayData;
+import org.spongepowered.api.event.data.entity.ChangePickupRuleData;
+import org.spongepowered.api.event.data.entity.ChangePigSaddleData;
+import org.spongepowered.api.event.data.entity.ChangePlayerCreatedData;
+import org.spongepowered.api.event.data.entity.ChangePlayingData;
+import org.spongepowered.api.event.data.entity.ChangeRabbitData;
+import org.spongepowered.api.event.data.entity.ChangeRespawnLocationData;
+import org.spongepowered.api.event.data.entity.ChangeScreamingData;
+import org.spongepowered.api.event.data.entity.ChangeShatteringData;
+import org.spongepowered.api.event.data.entity.ChangeShearedData;
+import org.spongepowered.api.event.data.entity.ChangeSilentData;
+import org.spongepowered.api.event.data.entity.ChangeSittingData;
+import org.spongepowered.api.event.data.entity.ChangeSizeData;
+import org.spongepowered.api.event.data.entity.ChangeSkeletonData;
+import org.spongepowered.api.event.data.entity.ChangeSkinData;
+import org.spongepowered.api.event.data.entity.ChangeSleepingData;
+import org.spongepowered.api.event.data.entity.ChangeSlimeData;
+import org.spongepowered.api.event.data.entity.ChangeSneakingData;
+import org.spongepowered.api.event.data.entity.ChangeSprintData;
+import org.spongepowered.api.event.data.entity.ChangeStatisticData;
+import org.spongepowered.api.event.data.entity.ChangeStuckArrowsData;
+import org.spongepowered.api.event.data.entity.ChangeTameableData;
+import org.spongepowered.api.event.data.entity.ChangeTradeOfferData;
+import org.spongepowered.api.event.data.entity.ChangeVehicleData;
+import org.spongepowered.api.event.data.entity.ChangeVelocityData;
+import org.spongepowered.api.event.data.entity.ChangeZombieData;
+import org.spongepowered.api.event.data.item.ChangeAuthorData;
+import org.spongepowered.api.event.data.item.ChangeBlockItemData;
+import org.spongepowered.api.event.data.item.ChangeBreakableData;
+import org.spongepowered.api.event.data.item.ChangeCoalData;
+import org.spongepowered.api.event.data.item.ChangeCookedFishData;
+import org.spongepowered.api.event.data.item.ChangeDurabilityData;
+import org.spongepowered.api.event.data.item.ChangeEnchantmentData;
+import org.spongepowered.api.event.data.item.ChangeFishData;
+import org.spongepowered.api.event.data.item.ChangeGenerationData;
+import org.spongepowered.api.event.data.item.ChangeGoldenAppleData;
+import org.spongepowered.api.event.data.item.ChangeHideData;
+import org.spongepowered.api.event.data.item.ChangeInventoryItemData;
+import org.spongepowered.api.event.data.item.ChangeLoreData;
+import org.spongepowered.api.event.data.item.ChangeMapItemData;
+import org.spongepowered.api.event.data.item.ChangePagedData;
+import org.spongepowered.api.event.data.item.ChangePlaceableData;
+import org.spongepowered.api.event.data.item.ChangeSpawnableData;
+import org.spongepowered.api.event.data.item.ChangeStoredEnchantmentData;
+import org.spongepowered.api.event.data.tileentity.ChangeBannerData;
+import org.spongepowered.api.event.data.tileentity.ChangeBeaconData;
+import org.spongepowered.api.event.data.tileentity.ChangeBrewingStandData;
+import org.spongepowered.api.event.data.tileentity.ChangeCooldownData;
+import org.spongepowered.api.event.data.tileentity.ChangeFurnaceData;
+import org.spongepowered.api.event.data.tileentity.ChangeLockableData;
+import org.spongepowered.api.event.data.tileentity.ChangeNoteData;
+import org.spongepowered.api.event.data.tileentity.ChangeSignData;
 import org.spongepowered.api.event.economy.EconomyTransactionEvent;
 import org.spongepowered.api.event.entity.AffectEntityEvent;
 import org.spongepowered.api.event.entity.AttackEntityEvent;
@@ -1097,21 +1413,3181 @@ public class SpongeEventFactory {
     /**
      * AUTOMATICALLY GENERATED, DO NOT EDIT.
      * Creates a new instance of
-     * {@link org.spongepowered.api.event.data.ChangeDataHolderEvent}.
+     * {@link org.spongepowered.api.event.data.ChangeColoredData}.
      * 
      * @param cause The cause
      * @param modifiedData The modified data
      * @param originalData The original data
      * @param targetHolder The target holder
-     * @return A new change data holder event
+     * @return A new change colored data
      */
-    public static ChangeDataHolderEvent createChangeDataHolderEvent(Cause cause, Optional<I> modifiedData, Optional<I> originalData, DataHolder targetHolder) {
+    public static ChangeColoredData createChangeColoredData(Cause cause, Optional<ImmutableColoredData> modifiedData, Optional<ImmutableColoredData> originalData, DataHolder targetHolder) {
         HashMap<String, Object> values = new HashMap<>();
         values.put("cause", cause);
         values.put("modifiedData", modifiedData);
         values.put("originalData", originalData);
         values.put("targetHolder", targetHolder);
-        return SpongeEventFactoryUtils.createEventImpl(ChangeDataHolderEvent.class, values);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeColoredData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeCommandData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change command data
+     */
+    public static ChangeCommandData createChangeCommandData(Cause cause, Optional<ImmutableCommandData> modifiedData, Optional<ImmutableCommandData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCommandData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeDisplayNameData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change display name data
+     */
+    public static ChangeDisplayNameData createChangeDisplayNameData(Cause cause, Optional<ImmutableDisplayNameData> modifiedData, Optional<ImmutableDisplayNameData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDisplayNameData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeDyeableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change dyeable data
+     */
+    public static ChangeDyeableData createChangeDyeableData(Cause cause, Optional<ImmutableDyeableData> modifiedData, Optional<ImmutableDyeableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDyeableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeFireworkEffectData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change firework effect data
+     */
+    public static ChangeFireworkEffectData createChangeFireworkEffectData(Cause cause, Optional<ImmutableFireworkEffectData> modifiedData, Optional<ImmutableFireworkEffectData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFireworkEffectData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeFireworkRocketData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change firework rocket data
+     */
+    public static ChangeFireworkRocketData createChangeFireworkRocketData(Cause cause, Optional<ImmutableFireworkRocketData> modifiedData, Optional<ImmutableFireworkRocketData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFireworkRocketData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeMobSpawnerData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change mob spawner data
+     */
+    public static ChangeMobSpawnerData createChangeMobSpawnerData(Cause cause, Optional<ImmutableMobSpawnerData> modifiedData, Optional<ImmutableMobSpawnerData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeMobSpawnerData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangePotionEffectData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change potion effect data
+     */
+    public static ChangePotionEffectData createChangePotionEffectData(Cause cause, Optional<ImmutablePotionEffectData> modifiedData, Optional<ImmutablePotionEffectData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePotionEffectData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeRepresentedItemData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change represented item data
+     */
+    public static ChangeRepresentedItemData createChangeRepresentedItemData(Cause cause, Optional<ImmutableRepresentedItemData> modifiedData, Optional<ImmutableRepresentedItemData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRepresentedItemData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeRepresentedPlayerData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change represented player data
+     */
+    public static ChangeRepresentedPlayerData createChangeRepresentedPlayerData(Cause cause, Optional<ImmutableRepresentedPlayerData> modifiedData, Optional<ImmutableRepresentedPlayerData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRepresentedPlayerData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeRotationalData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change rotational data
+     */
+    public static ChangeRotationalData createChangeRotationalData(Cause cause, Optional<ImmutableRotationalData> modifiedData, Optional<ImmutableRotationalData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRotationalData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeSkullData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change skull data
+     */
+    public static ChangeSkullData createChangeSkullData(Cause cause, Optional<ImmutableSkullData> modifiedData, Optional<ImmutableSkullData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSkullData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeTargetedLocationData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change targeted location data
+     */
+    public static ChangeTargetedLocationData createChangeTargetedLocationData(Cause cause, Optional<ImmutableTargetedLocationData> modifiedData, Optional<ImmutableTargetedLocationData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeTargetedLocationData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.ChangeWetData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change wet data
+     */
+    public static ChangeWetData createChangeWetData(Cause cause, Optional<ImmutableWetData> modifiedData, Optional<ImmutableWetData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeWetData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeAttachedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change attached data
+     */
+    public static ChangeAttachedData createChangeAttachedData(Cause cause, Optional<ImmutableAttachedData> modifiedData, Optional<ImmutableAttachedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAttachedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeAxisData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change axis data
+     */
+    public static ChangeAxisData createChangeAxisData(Cause cause, Optional<ImmutableAxisData> modifiedData, Optional<ImmutableAxisData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAxisData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeBigMushroomData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change big mushroom data
+     */
+    public static ChangeBigMushroomData createChangeBigMushroomData(Cause cause, Optional<ImmutableBigMushroomData> modifiedData, Optional<ImmutableBigMushroomData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBigMushroomData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeBrickData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change brick data
+     */
+    public static ChangeBrickData createChangeBrickData(Cause cause, Optional<ImmutableBrickData> modifiedData, Optional<ImmutableBrickData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBrickData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeComparatorData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change comparator data
+     */
+    public static ChangeComparatorData createChangeComparatorData(Cause cause, Optional<ImmutableComparatorData> modifiedData, Optional<ImmutableComparatorData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeComparatorData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeConnectedDirectionData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change connected direction data
+     */
+    public static ChangeConnectedDirectionData createChangeConnectedDirectionData(Cause cause, Optional<ImmutableConnectedDirectionData> modifiedData, Optional<ImmutableConnectedDirectionData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeConnectedDirectionData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDecayableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change decayable data
+     */
+    public static ChangeDecayableData createChangeDecayableData(Cause cause, Optional<ImmutableDecayableData> modifiedData, Optional<ImmutableDecayableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDecayableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDelayableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change delayable data
+     */
+    public static ChangeDelayableData createChangeDelayableData(Cause cause, Optional<ImmutableDelayableData> modifiedData, Optional<ImmutableDelayableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDelayableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDirectionalData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change directional data
+     */
+    public static ChangeDirectionalData createChangeDirectionalData(Cause cause, Optional<ImmutableDirectionalData> modifiedData, Optional<ImmutableDirectionalData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDirectionalData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDirtData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change dirt data
+     */
+    public static ChangeDirtData createChangeDirtData(Cause cause, Optional<ImmutableDirtData> modifiedData, Optional<ImmutableDirtData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDirtData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDisarmedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change disarmed data
+     */
+    public static ChangeDisarmedData createChangeDisarmedData(Cause cause, Optional<ImmutableDisarmedData> modifiedData, Optional<ImmutableDisarmedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDisarmedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDisguisedBlockData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change disguised block data
+     */
+    public static ChangeDisguisedBlockData createChangeDisguisedBlockData(Cause cause, Optional<ImmutableDisguisedBlockData> modifiedData, Optional<ImmutableDisguisedBlockData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDisguisedBlockData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDoublePlantData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change double plant data
+     */
+    public static ChangeDoublePlantData createChangeDoublePlantData(Cause cause, Optional<ImmutableDoublePlantData> modifiedData, Optional<ImmutableDoublePlantData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDoublePlantData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeDropData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change drop data
+     */
+    public static ChangeDropData createChangeDropData(Cause cause, Optional<ImmutableDropData> modifiedData, Optional<ImmutableDropData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDropData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeExtendedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change extended data
+     */
+    public static ChangeExtendedData createChangeExtendedData(Cause cause, Optional<ImmutableExtendedData> modifiedData, Optional<ImmutableExtendedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeExtendedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeFilledData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change filled data
+     */
+    public static ChangeFilledData createChangeFilledData(Cause cause, Optional<ImmutableFilledData> modifiedData, Optional<ImmutableFilledData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFilledData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeFluidLevelData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change fluid level data
+     */
+    public static ChangeFluidLevelData createChangeFluidLevelData(Cause cause, Optional<ImmutableFluidLevelData> modifiedData, Optional<ImmutableFluidLevelData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFluidLevelData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeGrowthData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change growth data
+     */
+    public static ChangeGrowthData createChangeGrowthData(Cause cause, Optional<ImmutableGrowthData> modifiedData, Optional<ImmutableGrowthData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGrowthData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeHingeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change hinge data
+     */
+    public static ChangeHingeData createChangeHingeData(Cause cause, Optional<ImmutableHingeData> modifiedData, Optional<ImmutableHingeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeHingeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeInWallData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change in wall data
+     */
+    public static ChangeInWallData createChangeInWallData(Cause cause, Optional<ImmutableInWallData> modifiedData, Optional<ImmutableInWallData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeInWallData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeLayeredData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change layered data
+     */
+    public static ChangeLayeredData createChangeLayeredData(Cause cause, Optional<ImmutableLayeredData> modifiedData, Optional<ImmutableLayeredData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeLayeredData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeLogAxisData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change log axis data
+     */
+    public static ChangeLogAxisData createChangeLogAxisData(Cause cause, Optional<ImmutableLogAxisData> modifiedData, Optional<ImmutableLogAxisData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeLogAxisData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeMoistureData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change moisture data
+     */
+    public static ChangeMoistureData createChangeMoistureData(Cause cause, Optional<ImmutableMoistureData> modifiedData, Optional<ImmutableMoistureData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeMoistureData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeOccupiedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change occupied data
+     */
+    public static ChangeOccupiedData createChangeOccupiedData(Cause cause, Optional<ImmutableOccupiedData> modifiedData, Optional<ImmutableOccupiedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeOccupiedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeOpenData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change open data
+     */
+    public static ChangeOpenData createChangeOpenData(Cause cause, Optional<ImmutableOpenData> modifiedData, Optional<ImmutableOpenData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeOpenData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangePistonData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change piston data
+     */
+    public static ChangePistonData createChangePistonData(Cause cause, Optional<ImmutablePistonData> modifiedData, Optional<ImmutablePistonData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePistonData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangePlantData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change plant data
+     */
+    public static ChangePlantData createChangePlantData(Cause cause, Optional<ImmutablePlantData> modifiedData, Optional<ImmutablePlantData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePlantData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangePortionData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change portion data
+     */
+    public static ChangePortionData createChangePortionData(Cause cause, Optional<ImmutablePortionData> modifiedData, Optional<ImmutablePortionData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePortionData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangePoweredData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change powered data
+     */
+    public static ChangePoweredData createChangePoweredData(Cause cause, Optional<ImmutablePoweredData> modifiedData, Optional<ImmutablePoweredData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePoweredData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangePrismarineData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change prismarine data
+     */
+    public static ChangePrismarineData createChangePrismarineData(Cause cause, Optional<ImmutablePrismarineData> modifiedData, Optional<ImmutablePrismarineData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePrismarineData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeQuartzData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change quartz data
+     */
+    public static ChangeQuartzData createChangeQuartzData(Cause cause, Optional<ImmutableQuartzData> modifiedData, Optional<ImmutableQuartzData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeQuartzData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeRailDirectionData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change rail direction data
+     */
+    public static ChangeRailDirectionData createChangeRailDirectionData(Cause cause, Optional<ImmutableRailDirectionData> modifiedData, Optional<ImmutableRailDirectionData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRailDirectionData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeRedstonePoweredData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change redstone powered data
+     */
+    public static ChangeRedstonePoweredData createChangeRedstonePoweredData(Cause cause, Optional<ImmutableRedstonePoweredData> modifiedData, Optional<ImmutableRedstonePoweredData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRedstonePoweredData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeSandData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sand data
+     */
+    public static ChangeSandData createChangeSandData(Cause cause, Optional<ImmutableSandData> modifiedData, Optional<ImmutableSandData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSandData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeSandstoneData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sandstone data
+     */
+    public static ChangeSandstoneData createChangeSandstoneData(Cause cause, Optional<ImmutableSandstoneData> modifiedData, Optional<ImmutableSandstoneData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSandstoneData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeSeamlessData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change seamless data
+     */
+    public static ChangeSeamlessData createChangeSeamlessData(Cause cause, Optional<ImmutableSeamlessData> modifiedData, Optional<ImmutableSeamlessData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSeamlessData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeShrubData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change shrub data
+     */
+    public static ChangeShrubData createChangeShrubData(Cause cause, Optional<ImmutableShrubData> modifiedData, Optional<ImmutableShrubData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeShrubData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeSlabData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change slab data
+     */
+    public static ChangeSlabData createChangeSlabData(Cause cause, Optional<ImmutableSlabData> modifiedData, Optional<ImmutableSlabData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSlabData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeSnowedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change snowed data
+     */
+    public static ChangeSnowedData createChangeSnowedData(Cause cause, Optional<ImmutableSnowedData> modifiedData, Optional<ImmutableSnowedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSnowedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeStairShapeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change stair shape data
+     */
+    public static ChangeStairShapeData createChangeStairShapeData(Cause cause, Optional<ImmutableStairShapeData> modifiedData, Optional<ImmutableStairShapeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeStairShapeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeStoneData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change stone data
+     */
+    public static ChangeStoneData createChangeStoneData(Cause cause, Optional<ImmutableStoneData> modifiedData, Optional<ImmutableStoneData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeStoneData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeTreeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change tree data
+     */
+    public static ChangeTreeData createChangeTreeData(Cause cause, Optional<ImmutableTreeData> modifiedData, Optional<ImmutableTreeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeTreeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeWallData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change wall data
+     */
+    public static ChangeWallData createChangeWallData(Cause cause, Optional<ImmutableWallData> modifiedData, Optional<ImmutableWallData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeWallData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.block.ChangeWireAttachmentData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change wire attachment data
+     */
+    public static ChangeWireAttachmentData createChangeWireAttachmentData(Cause cause, Optional<ImmutableWireAttachmentData> modifiedData, Optional<ImmutableWireAttachmentData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeWireAttachmentData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAchievementData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change achievement data
+     */
+    public static ChangeAchievementData createChangeAchievementData(Cause cause, Optional<ImmutableAchievementData> modifiedData, Optional<ImmutableAchievementData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAchievementData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAffectsSpawningData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change affects spawning data
+     */
+    public static ChangeAffectsSpawningData createChangeAffectsSpawningData(Cause cause, Optional<ImmutableAffectsSpawningData> modifiedData, Optional<ImmutableAffectsSpawningData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAffectsSpawningData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAgeableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change ageable data
+     */
+    public static ChangeAgeableData createChangeAgeableData(Cause cause, Optional<ImmutableAgeableData> modifiedData, Optional<ImmutableAgeableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAgeableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAgentData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change agent data
+     */
+    public static ChangeAgentData createChangeAgentData(Cause cause, Optional<ImmutableAgentData> modifiedData, Optional<ImmutableAgentData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAgentData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAggressiveData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change aggressive data
+     */
+    public static ChangeAggressiveData createChangeAggressiveData(Cause cause, Optional<ImmutableAggressiveData> modifiedData, Optional<ImmutableAggressiveData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAggressiveData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeAngerableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change angerable data
+     */
+    public static ChangeAngerableData createChangeAngerableData(Cause cause, Optional<ImmutableAngerableData> modifiedData, Optional<ImmutableAngerableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAngerableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeArmorStandData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change armor stand data
+     */
+    public static ChangeArmorStandData createChangeArmorStandData(Cause cause, Optional<ImmutableArmorStandData> modifiedData, Optional<ImmutableArmorStandData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeArmorStandData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeArtData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change art data
+     */
+    public static ChangeArtData createChangeArtData(Cause cause, Optional<ImmutableArtData> modifiedData, Optional<ImmutableArtData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeArtData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeBodyPartRotationalData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change body part rotational data
+     */
+    public static ChangeBodyPartRotationalData createChangeBodyPartRotationalData(Cause cause, Optional<ImmutableBodyPartRotationalData> modifiedData, Optional<ImmutableBodyPartRotationalData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBodyPartRotationalData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeBreathingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change breathing data
+     */
+    public static ChangeBreathingData createChangeBreathingData(Cause cause, Optional<ImmutableBreathingData> modifiedData, Optional<ImmutableBreathingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBreathingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeBreedableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change breedable data
+     */
+    public static ChangeBreedableData createChangeBreedableData(Cause cause, Optional<ImmutableBreedableData> modifiedData, Optional<ImmutableBreedableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBreedableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeCareerData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change career data
+     */
+    public static ChangeCareerData createChangeCareerData(Cause cause, Optional<ImmutableCareerData> modifiedData, Optional<ImmutableCareerData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCareerData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeChargedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change charged data
+     */
+    public static ChangeChargedData createChangeChargedData(Cause cause, Optional<ImmutableChargedData> modifiedData, Optional<ImmutableChargedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeChargedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeCriticalHitData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change critical hit data
+     */
+    public static ChangeCriticalHitData createChangeCriticalHitData(Cause cause, Optional<ImmutableCriticalHitData> modifiedData, Optional<ImmutableCriticalHitData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCriticalHitData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeCustomNameVisibleData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change custom name visible data
+     */
+    public static ChangeCustomNameVisibleData createChangeCustomNameVisibleData(Cause cause, Optional<ImmutableCustomNameVisibleData> modifiedData, Optional<ImmutableCustomNameVisibleData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCustomNameVisibleData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeDamageableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change damageable data
+     */
+    public static ChangeDamageableData createChangeDamageableData(Cause cause, Optional<ImmutableDamageableData> modifiedData, Optional<ImmutableDamageableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDamageableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeDamagingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change damaging data
+     */
+    public static ChangeDamagingData createChangeDamagingData(Cause cause, Optional<ImmutableDamagingData> modifiedData, Optional<ImmutableDamagingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDamagingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeDespawnDelayData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change despawn delay data
+     */
+    public static ChangeDespawnDelayData createChangeDespawnDelayData(Cause cause, Optional<ImmutableDespawnDelayData> modifiedData, Optional<ImmutableDespawnDelayData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDespawnDelayData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeDominantHandData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change dominant hand data
+     */
+    public static ChangeDominantHandData createChangeDominantHandData(Cause cause, Optional<ImmutableDominantHandData> modifiedData, Optional<ImmutableDominantHandData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDominantHandData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeElderData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change elder data
+     */
+    public static ChangeElderData createChangeElderData(Cause cause, Optional<ImmutableElderData> modifiedData, Optional<ImmutableElderData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeElderData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeExpOrbData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change exp orb data
+     */
+    public static ChangeExpOrbData createChangeExpOrbData(Cause cause, Optional<ImmutableExpOrbData> modifiedData, Optional<ImmutableExpOrbData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeExpOrbData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeExperienceHolderData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change experience holder data
+     */
+    public static ChangeExperienceHolderData createChangeExperienceHolderData(Cause cause, Optional<ImmutableExperienceHolderData> modifiedData, Optional<ImmutableExperienceHolderData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeExperienceHolderData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeExpirableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change expirable data
+     */
+    public static ChangeExpirableData createChangeExpirableData(Cause cause, Optional<ImmutableExpirableData> modifiedData, Optional<ImmutableExpirableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeExpirableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeExplosionRadiusData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change explosion radius data
+     */
+    public static ChangeExplosionRadiusData createChangeExplosionRadiusData(Cause cause, Optional<ImmutableExplosionRadiusData> modifiedData, Optional<ImmutableExplosionRadiusData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeExplosionRadiusData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFallDistanceData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change fall distance data
+     */
+    public static ChangeFallDistanceData createChangeFallDistanceData(Cause cause, Optional<ImmutableFallDistanceData> modifiedData, Optional<ImmutableFallDistanceData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFallDistanceData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFallingBlockData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change falling block data
+     */
+    public static ChangeFallingBlockData createChangeFallingBlockData(Cause cause, Optional<ImmutableFallingBlockData> modifiedData, Optional<ImmutableFallingBlockData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFallingBlockData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFlammableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change flammable data
+     */
+    public static ChangeFlammableData createChangeFlammableData(Cause cause, Optional<ImmutableFlammableData> modifiedData, Optional<ImmutableFlammableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFlammableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFlyingAbilityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change flying ability data
+     */
+    public static ChangeFlyingAbilityData createChangeFlyingAbilityData(Cause cause, Optional<ImmutableFlyingAbilityData> modifiedData, Optional<ImmutableFlyingAbilityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFlyingAbilityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFlyingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change flying data
+     */
+    public static ChangeFlyingData createChangeFlyingData(Cause cause, Optional<ImmutableFlyingData> modifiedData, Optional<ImmutableFlyingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFlyingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFoodData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change food data
+     */
+    public static ChangeFoodData createChangeFoodData(Cause cause, Optional<ImmutableFoodData> modifiedData, Optional<ImmutableFoodData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFoodData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeFuseData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change fuse data
+     */
+    public static ChangeFuseData createChangeFuseData(Cause cause, Optional<ImmutableFuseData> modifiedData, Optional<ImmutableFuseData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFuseData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeGameModeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change game mode data
+     */
+    public static ChangeGameModeData createChangeGameModeData(Cause cause, Optional<ImmutableGameModeData> modifiedData, Optional<ImmutableGameModeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGameModeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeGlowingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change glowing data
+     */
+    public static ChangeGlowingData createChangeGlowingData(Cause cause, Optional<ImmutableGlowingData> modifiedData, Optional<ImmutableGlowingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGlowingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeGravityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change gravity data
+     */
+    public static ChangeGravityData createChangeGravityData(Cause cause, Optional<ImmutableGravityData> modifiedData, Optional<ImmutableGravityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGravityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeGriefingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change griefing data
+     */
+    public static ChangeGriefingData createChangeGriefingData(Cause cause, Optional<ImmutableGriefingData> modifiedData, Optional<ImmutableGriefingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGriefingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeHealthData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change health data
+     */
+    public static ChangeHealthData createChangeHealthData(Cause cause, Optional<ImmutableHealthData> modifiedData, Optional<ImmutableHealthData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeHealthData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeHealthScalingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change health scaling data
+     */
+    public static ChangeHealthScalingData createChangeHealthScalingData(Cause cause, Optional<ImmutableHealthScalingData> modifiedData, Optional<ImmutableHealthScalingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeHealthScalingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeHorseData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change horse data
+     */
+    public static ChangeHorseData createChangeHorseData(Cause cause, Optional<ImmutableHorseData> modifiedData, Optional<ImmutableHorseData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeHorseData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeIgniteableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change igniteable data
+     */
+    public static ChangeIgniteableData createChangeIgniteableData(Cause cause, Optional<ImmutableIgniteableData> modifiedData, Optional<ImmutableIgniteableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeIgniteableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeInvisibilityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change invisibility data
+     */
+    public static ChangeInvisibilityData createChangeInvisibilityData(Cause cause, Optional<ImmutableInvisibilityData> modifiedData, Optional<ImmutableInvisibilityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeInvisibilityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeInvulnerabilityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change invulnerability data
+     */
+    public static ChangeInvulnerabilityData createChangeInvulnerabilityData(Cause cause, Optional<ImmutableInvulnerabilityData> modifiedData, Optional<ImmutableInvulnerabilityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeInvulnerabilityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeJoinData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change join data
+     */
+    public static ChangeJoinData createChangeJoinData(Cause cause, Optional<ImmutableJoinData> modifiedData, Optional<ImmutableJoinData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeJoinData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeKnockbackData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change knockback data
+     */
+    public static ChangeKnockbackData createChangeKnockbackData(Cause cause, Optional<ImmutableKnockbackData> modifiedData, Optional<ImmutableKnockbackData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeKnockbackData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeLeashData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change leash data
+     */
+    public static ChangeLeashData createChangeLeashData(Cause cause, Optional<ImmutableLeashData> modifiedData, Optional<ImmutableLeashData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeLeashData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeMinecartBlockData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change minecart block data
+     */
+    public static ChangeMinecartBlockData createChangeMinecartBlockData(Cause cause, Optional<ImmutableMinecartBlockData> modifiedData, Optional<ImmutableMinecartBlockData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeMinecartBlockData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeMovementSpeedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change movement speed data
+     */
+    public static ChangeMovementSpeedData createChangeMovementSpeedData(Cause cause, Optional<ImmutableMovementSpeedData> modifiedData, Optional<ImmutableMovementSpeedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeMovementSpeedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeOcelotData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change ocelot data
+     */
+    public static ChangeOcelotData createChangeOcelotData(Cause cause, Optional<ImmutableOcelotData> modifiedData, Optional<ImmutableOcelotData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeOcelotData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePassengerData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change passenger data
+     */
+    public static ChangePassengerData createChangePassengerData(Cause cause, Optional<ImmutablePassengerData> modifiedData, Optional<ImmutablePassengerData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePassengerData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePersistingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change persisting data
+     */
+    public static ChangePersistingData createChangePersistingData(Cause cause, Optional<ImmutablePersistingData> modifiedData, Optional<ImmutablePersistingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePersistingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePickupDelayData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change pickup delay data
+     */
+    public static ChangePickupDelayData createChangePickupDelayData(Cause cause, Optional<ImmutablePickupDelayData> modifiedData, Optional<ImmutablePickupDelayData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePickupDelayData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePickupRuleData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change pickup rule data
+     */
+    public static ChangePickupRuleData createChangePickupRuleData(Cause cause, Optional<ImmutablePickupRuleData> modifiedData, Optional<ImmutablePickupRuleData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePickupRuleData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePigSaddleData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change pig saddle data
+     */
+    public static ChangePigSaddleData createChangePigSaddleData(Cause cause, Optional<ImmutablePigSaddleData> modifiedData, Optional<ImmutablePigSaddleData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePigSaddleData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePlayerCreatedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change player created data
+     */
+    public static ChangePlayerCreatedData createChangePlayerCreatedData(Cause cause, Optional<ImmutablePlayerCreatedData> modifiedData, Optional<ImmutablePlayerCreatedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePlayerCreatedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangePlayingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change playing data
+     */
+    public static ChangePlayingData createChangePlayingData(Cause cause, Optional<ImmutablePlayingData> modifiedData, Optional<ImmutablePlayingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePlayingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeRabbitData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change rabbit data
+     */
+    public static ChangeRabbitData createChangeRabbitData(Cause cause, Optional<ImmutableRabbitData> modifiedData, Optional<ImmutableRabbitData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRabbitData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeRespawnLocationData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change respawn location data
+     */
+    public static ChangeRespawnLocationData createChangeRespawnLocationData(Cause cause, Optional<ImmutableRespawnLocation> modifiedData, Optional<ImmutableRespawnLocation> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeRespawnLocationData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeScreamingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change screaming data
+     */
+    public static ChangeScreamingData createChangeScreamingData(Cause cause, Optional<ImmutableScreamingData> modifiedData, Optional<ImmutableScreamingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeScreamingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeShatteringData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change shattering data
+     */
+    public static ChangeShatteringData createChangeShatteringData(Cause cause, Optional<ImmutableShatteringData> modifiedData, Optional<ImmutableShatteringData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeShatteringData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeShearedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sheared data
+     */
+    public static ChangeShearedData createChangeShearedData(Cause cause, Optional<ImmutableShearedData> modifiedData, Optional<ImmutableShearedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeShearedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSilentData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change silent data
+     */
+    public static ChangeSilentData createChangeSilentData(Cause cause, Optional<ImmutableSilentData> modifiedData, Optional<ImmutableSilentData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSilentData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSittingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sitting data
+     */
+    public static ChangeSittingData createChangeSittingData(Cause cause, Optional<ImmutableSittingData> modifiedData, Optional<ImmutableSittingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSittingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSizeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change size data
+     */
+    public static ChangeSizeData createChangeSizeData(Cause cause, Optional<ImmutableSizeData> modifiedData, Optional<ImmutableSizeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSizeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSkeletonData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change skeleton data
+     */
+    public static ChangeSkeletonData createChangeSkeletonData(Cause cause, Optional<ImmutableSkeletonData> modifiedData, Optional<ImmutableSkeletonData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSkeletonData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSkinData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change skin data
+     */
+    public static ChangeSkinData createChangeSkinData(Cause cause, Optional<ImmutableSkinData> modifiedData, Optional<ImmutableSkinData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSkinData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSleepingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sleeping data
+     */
+    public static ChangeSleepingData createChangeSleepingData(Cause cause, Optional<ImmutableSleepingData> modifiedData, Optional<ImmutableSleepingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSleepingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSlimeData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change slime data
+     */
+    public static ChangeSlimeData createChangeSlimeData(Cause cause, Optional<ImmutableSlimeData> modifiedData, Optional<ImmutableSlimeData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSlimeData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSneakingData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sneaking data
+     */
+    public static ChangeSneakingData createChangeSneakingData(Cause cause, Optional<ImmutableSneakingData> modifiedData, Optional<ImmutableSneakingData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSneakingData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeSprintData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sprint data
+     */
+    public static ChangeSprintData createChangeSprintData(Cause cause, Optional<ImmutableSprintData> modifiedData, Optional<ImmutableSprintData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSprintData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeStatisticData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change statistic data
+     */
+    public static ChangeStatisticData createChangeStatisticData(Cause cause, Optional<ImmutableStatisticData> modifiedData, Optional<ImmutableStatisticData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeStatisticData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeStuckArrowsData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change stuck arrows data
+     */
+    public static ChangeStuckArrowsData createChangeStuckArrowsData(Cause cause, Optional<ImmutableStuckArrowsData> modifiedData, Optional<ImmutableStuckArrowsData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeStuckArrowsData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeTameableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change tameable data
+     */
+    public static ChangeTameableData createChangeTameableData(Cause cause, Optional<ImmutableTameableData> modifiedData, Optional<ImmutableTameableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeTameableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeTradeOfferData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change trade offer data
+     */
+    public static ChangeTradeOfferData createChangeTradeOfferData(Cause cause, Optional<ImmutableTradeOfferData> modifiedData, Optional<ImmutableTradeOfferData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeTradeOfferData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeVehicleData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change vehicle data
+     */
+    public static ChangeVehicleData createChangeVehicleData(Cause cause, Optional<ImmutableVehicleData> modifiedData, Optional<ImmutableVehicleData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeVehicleData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeVelocityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change velocity data
+     */
+    public static ChangeVelocityData createChangeVelocityData(Cause cause, Optional<ImmutableVelocityData> modifiedData, Optional<ImmutableVelocityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeVelocityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.entity.ChangeZombieData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change zombie data
+     */
+    public static ChangeZombieData createChangeZombieData(Cause cause, Optional<ImmutableZombieData> modifiedData, Optional<ImmutableZombieData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeZombieData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeAuthorData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change author data
+     */
+    public static ChangeAuthorData createChangeAuthorData(Cause cause, Optional<ImmutableAuthorData> modifiedData, Optional<ImmutableAuthorData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeAuthorData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeBlockItemData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change block item data
+     */
+    public static ChangeBlockItemData createChangeBlockItemData(Cause cause, Optional<ImmutableBlockItemData> modifiedData, Optional<ImmutableBlockItemData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBlockItemData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeBreakableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change breakable data
+     */
+    public static ChangeBreakableData createChangeBreakableData(Cause cause, Optional<ImmutableBreakableData> modifiedData, Optional<ImmutableBreakableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBreakableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeCoalData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change coal data
+     */
+    public static ChangeCoalData createChangeCoalData(Cause cause, Optional<ImmutableCoalData> modifiedData, Optional<ImmutableCoalData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCoalData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeCookedFishData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change cooked fish data
+     */
+    public static ChangeCookedFishData createChangeCookedFishData(Cause cause, Optional<ImmutableCookedFishData> modifiedData, Optional<ImmutableCookedFishData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCookedFishData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeDurabilityData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change durability data
+     */
+    public static ChangeDurabilityData createChangeDurabilityData(Cause cause, Optional<ImmutableDurabilityData> modifiedData, Optional<ImmutableDurabilityData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeDurabilityData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeEnchantmentData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change enchantment data
+     */
+    public static ChangeEnchantmentData createChangeEnchantmentData(Cause cause, Optional<ImmutableEnchantmentData> modifiedData, Optional<ImmutableEnchantmentData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeEnchantmentData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeFishData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change fish data
+     */
+    public static ChangeFishData createChangeFishData(Cause cause, Optional<ImmutableFishData> modifiedData, Optional<ImmutableFishData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFishData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeGenerationData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change generation data
+     */
+    public static ChangeGenerationData createChangeGenerationData(Cause cause, Optional<ImmutableGenerationData> modifiedData, Optional<ImmutableGenerationData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGenerationData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeGoldenAppleData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change golden apple data
+     */
+    public static ChangeGoldenAppleData createChangeGoldenAppleData(Cause cause, Optional<ImmutableGoldenAppleData> modifiedData, Optional<ImmutableGoldenAppleData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeGoldenAppleData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeHideData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change hide data
+     */
+    public static ChangeHideData createChangeHideData(Cause cause, Optional<ImmutableHideData> modifiedData, Optional<ImmutableHideData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeHideData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeInventoryItemData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change inventory item data
+     */
+    public static ChangeInventoryItemData createChangeInventoryItemData(Cause cause, Optional<ImmutableInventoryItemData> modifiedData, Optional<ImmutableInventoryItemData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeInventoryItemData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeLoreData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change lore data
+     */
+    public static ChangeLoreData createChangeLoreData(Cause cause, Optional<ImmutableLoreData> modifiedData, Optional<ImmutableLoreData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeLoreData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeMapItemData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change map item data
+     */
+    public static ChangeMapItemData createChangeMapItemData(Cause cause, Optional<ImmutableMapItemData> modifiedData, Optional<ImmutableMapItemData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeMapItemData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangePagedData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change paged data
+     */
+    public static ChangePagedData createChangePagedData(Cause cause, Optional<ImmutablePagedData> modifiedData, Optional<ImmutablePagedData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePagedData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangePlaceableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change placeable data
+     */
+    public static ChangePlaceableData createChangePlaceableData(Cause cause, Optional<ImmutablePlaceableData> modifiedData, Optional<ImmutablePlaceableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangePlaceableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeSpawnableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change spawnable data
+     */
+    public static ChangeSpawnableData createChangeSpawnableData(Cause cause, Optional<ImmutableSpawnableData> modifiedData, Optional<ImmutableSpawnableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSpawnableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.item.ChangeStoredEnchantmentData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change stored enchantment data
+     */
+    public static ChangeStoredEnchantmentData createChangeStoredEnchantmentData(Cause cause, Optional<ImmutableStoredEnchantmentData> modifiedData, Optional<ImmutableStoredEnchantmentData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeStoredEnchantmentData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeBannerData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change banner data
+     */
+    public static ChangeBannerData createChangeBannerData(Cause cause, Optional<ImmutableBannerData> modifiedData, Optional<ImmutableBannerData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBannerData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeBeaconData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change beacon data
+     */
+    public static ChangeBeaconData createChangeBeaconData(Cause cause, Optional<ImmutableBeaconData> modifiedData, Optional<ImmutableBeaconData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBeaconData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeBrewingStandData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change brewing stand data
+     */
+    public static ChangeBrewingStandData createChangeBrewingStandData(Cause cause, Optional<ImmutableBrewingStandData> modifiedData, Optional<ImmutableBrewingStandData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeBrewingStandData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeCooldownData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change cooldown data
+     */
+    public static ChangeCooldownData createChangeCooldownData(Cause cause, Optional<ImmutableCooldownData> modifiedData, Optional<ImmutableCooldownData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeCooldownData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeFurnaceData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change furnace data
+     */
+    public static ChangeFurnaceData createChangeFurnaceData(Cause cause, Optional<ImmutableFurnaceData> modifiedData, Optional<ImmutableFurnaceData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeFurnaceData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeLockableData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change lockable data
+     */
+    public static ChangeLockableData createChangeLockableData(Cause cause, Optional<ImmutableLockableData> modifiedData, Optional<ImmutableLockableData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeLockableData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeNoteData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change note data
+     */
+    public static ChangeNoteData createChangeNoteData(Cause cause, Optional<ImmutableNoteData> modifiedData, Optional<ImmutableNoteData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeNoteData.class, values);
+    }
+
+    /**
+     * AUTOMATICALLY GENERATED, DO NOT EDIT.
+     * Creates a new instance of
+     * {@link org.spongepowered.api.event.data.tileentity.ChangeSignData}.
+     * 
+     * @param cause The cause
+     * @param modifiedData The modified data
+     * @param originalData The original data
+     * @param targetHolder The target holder
+     * @return A new change sign data
+     */
+    public static ChangeSignData createChangeSignData(Cause cause, Optional<ImmutableSignData> modifiedData, Optional<ImmutableSignData> originalData, DataHolder targetHolder) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("cause", cause);
+        values.put("modifiedData", modifiedData);
+        values.put("originalData", originalData);
+        values.put("targetHolder", targetHolder);
+        return SpongeEventFactoryUtils.createEventImpl(ChangeSignData.class, values);
     }
 
     /**

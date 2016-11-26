@@ -111,7 +111,9 @@ genEventImpl {
             'src/main/java/org/spongepowered/api/event/user/',
             'src/main/java/org/spongepowered/api/event/world/',
     ]
-    excludeSrc = []
+    excludeSrc = [
+            'src/main/java/org/spongepowered/api/event/data/ChangeDataHolderEvent.java'
+    ]
     outputDir = 'src/main/java/'
     outputFactory = 'org.spongepowered.api.event.SpongeEventFactory'
     eventImplCreateMethod = 'org.spongepowered.api.event.SpongeEventFactoryUtils.createEventImpl'

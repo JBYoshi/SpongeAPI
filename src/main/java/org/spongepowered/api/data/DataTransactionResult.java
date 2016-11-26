@@ -36,7 +36,6 @@ import org.spongepowered.api.data.value.BaseValue;
 import org.spongepowered.api.data.value.immutable.ImmutableValue;
 import org.spongepowered.api.data.value.mutable.CompositeValueStore;
 import org.spongepowered.api.data.value.mutable.Value;
-import org.spongepowered.api.event.data.ChangeDataHolderEvent;
 import org.spongepowered.api.util.ResettableBuilder;
 
 import java.util.ArrayList;
@@ -332,8 +331,7 @@ public final class DataTransactionResult {
 
     /**
      * A type of builder for building {@link DataTransactionResult}s. The common
-     * use is for both implementations of {@link DataHolder}s, and various
-     * {@link org.spongepowered.api.event.data.ChangeDataHolderEvent.ValueChange}s.
+     * use is for both implementations of {@link DataHolder}s.
      */
     public static final class Builder implements ResettableBuilder<DataTransactionResult, Builder> {
 

@@ -22,26 +22,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.event.impl;
+package org.spongepowered.api.event.data.block;
 
-import org.spongepowered.api.data.DataTransactionResult;
 import org.spongepowered.api.event.data.ChangeDataHolderEvent;
-import org.spongepowered.api.eventgencore.annotation.UseField;
+import org.spongepowered.api.data.manipulator.immutable.block.ImmutableDirectionalData;
+import org.spongepowered.api.data.manipulator.mutable.block.DirectionalData;
 
-public abstract class AbstractValueChangeEvent implements ChangeDataHolderEvent.ValueChange {
+import java.util.Optional;
 
-    @UseField
-    protected DataTransactionResult originalChanges;
-    @UseField
-    protected DataTransactionResult endResult;
+import javax.annotation.Nullable;
 
-    protected void init() {
-        this.endResult = this.originalChanges;
-    }
+public interface ChangeDirectionalData extends ChangeDataHolderEvent<DirectionalData, ImmutableDirectionalData> {
 
     @Override
-    public ValueChange proposeChanges(DataTransactionResult result) {
-        this.endResult = result;
-        return this;
-    }
+    Optional<ImmutableDirectionalData> getOriginalData();
+
+    @Override
+    Optional<ImmutableDirectionalData> getModifiedData();
+
+    @Override
+    void setModifiedData(@Nullable ImmutableDirectionalData dataManipulator);
 }

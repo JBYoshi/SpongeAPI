@@ -43,5 +43,4 @@ public interface ImmutableColoredData extends ImmutableDataManipulator<Immutable
      * @return The immutable value for the color
      */
     ImmutableValue<Color> color();
-
 }
